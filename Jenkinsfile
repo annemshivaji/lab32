@@ -5,14 +5,27 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from your repository
-                git 'YOUR_REPOSITORY_URL'
+                git 'https://github.com/annemshivaji/lab32.git'
             }
         }
         stage('Build') {
             steps {
-                // Build your Java project using Maven
+                // Assuming your project uses Maven, perform a Maven build
                 sh 'mvn clean install'
             }
         }
+        stage('Test') {
+            steps {
+                // Execute tests (if applicable)
+                sh 'mvn test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                // Perform deployment or other necessary actions
+                // Example: sh 'mvn deploy'
+            }
+        }
+        // Add more stages as needed (e.g., additional build steps, integration, deployment, etc.)
     }
 }
