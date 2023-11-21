@@ -16,10 +16,7 @@ pipeline {
 
                         // Maven build with clean and install phases
                         bat 'mvn clean install'
-                    } catch (Exception e) {
-                        currentBuild.result = 'FAILURE'
-                        echo "Build failed: ${e.message}"
-                    }
+                    } 
                 }
             }
         }
