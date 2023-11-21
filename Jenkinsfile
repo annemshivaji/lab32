@@ -20,12 +20,7 @@ pipeline {
                 sh 'mvn test'
             }
         }
-        stage('Deploy') {
-            steps {
-                // Perform deployment or other necessary actions
-                // Example: sh 'mvn deploy'
-            }
-        }
+   
         // Add more stages as needed (e.g., additional build steps, integration, deployment, etc.)
     }
 }
