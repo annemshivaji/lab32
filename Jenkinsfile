@@ -1,22 +1,23 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = 'C:\\Program Files\\apache-maven-3.9.5'
-        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
-    }
-
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build') {
             steps {
                 script {
                     try {
-                        // Set up environment variables for Windows
-                        bat "set PATH=%JAVA_HOME%\\bin;%MAVEN_HOME%\\bin;%PATH%"
-
-                        // Maven build with clean and install phases
-                        bat 'mvn clean install'
-                    } 
+                        sh 'mvn clean install'
+                    } catch (Exception e) {
+                        currentBuild.result = 'FAILURE'
+                        echo "Build failed: ${e.message}"
+                        // Add additional logging or steps to gather more details about the failure
+                        // For example, printing console output or collecting logs
+                    }
                 }
             }
         }
