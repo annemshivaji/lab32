@@ -4,20 +4,14 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Checking out the code from the repository...'
-                checkout scm
+                // Checkout the code from your repository
+                git 'YOUR_REPOSITORY_URL'
             }
         }
         stage('Build') {
             steps {
-                echo 'This is Stage 1'
-                echo 'Performing some actions in Stage 1...'
-            }
-        }
-        stage('clean') {
-            steps {
-                echo 'This is Stage 2'
-                echo 'Performing some actions in Stage 2...'
+                // Build your Java project using Maven
+                sh 'mvn clean install'
             }
         }
     }
