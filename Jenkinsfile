@@ -4,21 +4,20 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out the code from the repository...'
                 checkout scm
             }
         }
         stage('Build') {
             steps {
-                script {
-                    try {
-                        sh 'mvn clean install'
-                    } catch (Exception e) {
-                        currentBuild.result = 'FAILURE'
-                        echo "Build failed: ${e.message}"
-                        // Add additional logging or steps to gather more details about the failure
-                        // For example, printing console output or collecting logs
-                    }
-                }
+                echo 'This is Stage 1'
+                echo 'Performing some actions in Stage 1...'
+            }
+        }
+        stage('clean') {
+            steps {
+                echo 'This is Stage 2'
+                echo 'Performing some actions in Stage 2...'
             }
         }
     }
