@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'MavenInstallationName'
+    }
 
     stages {
         stage('Checkout') {
@@ -8,6 +11,7 @@ pipeline {
                 git 'https://github.com/annemshivaji/lab32.git'
             }
         }
+        
         stage('Build') {
             steps {
                 // Assuming your project uses Maven, perform a Maven build
