@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        MAVEN_HOME = 'C:\\path\\to\\maven'
+        MAVEN_HOME = 'C:\Program Files\apache-maven-3.9.5'
         JAVA_HOME = 'C:\Program Files\Java'
     }
 
